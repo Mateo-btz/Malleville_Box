@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { Component, useEffect } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { ImageBackground,Image,  StyleSheet, Text, View, Button, TouchableOpacity, ScrollView } from 'react-native';
 import { Audio } from 'expo-av';
 import Icon from 'react-native-ionicons';
 import { Ionicons } from '@expo/vector-icons';
+import Favorites from '../components/Favorites';
 // import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 // import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
@@ -139,6 +140,7 @@ playSample = async (uri) => {
 }
 }
 
+
  renderSamples = () => this.SAMPLES.map((sample, i) => (
 
   <TouchableOpacity
@@ -148,8 +150,8 @@ playSample = async (uri) => {
     <View style={this.styles.box}>
     <Text style={this.styles.btnText}>{sample.name}</Text> 
     <View style={this.styles.row}>
-    <Ionicons name="heart" size={30} />
-    <Ionicons name="download" size={30} /> 
+    <Favorites />
+    <Ionicons name="download" size={35} /> 
     </View>
     </View>
     </TouchableOpacity>

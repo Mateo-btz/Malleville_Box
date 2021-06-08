@@ -6,6 +6,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Image } from 'react-native';
 import * as React from 'react';
 
 import Colors from '../constants/Colors';
@@ -55,7 +56,9 @@ const TabOneStack = createStackNavigator<TabOneParamList>();
 
 function TabOneNavigator() {
   return (
+    
     <TabOneStack.Navigator>
+      {/* <Image source={require('../assets/images/rené.jpg')}/> */}
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
