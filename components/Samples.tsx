@@ -22,6 +22,8 @@ export default class Samples extends React.Component {
   styles = StyleSheet.create({
     container: {
       flex: 1,
+      position: 'relative',
+      zIndex: 1,
     },
     row: {
       flexDirection: "row",
@@ -31,14 +33,14 @@ export default class Samples extends React.Component {
       top: 40,
     },
     backgroundImg: {
-      resizeMode: "stretch",
-      width: "auto",
-      height: "auto",
-      position: "absolute",
+      width: '100%',
+      height: '100%',
+      position: 'absolute',
+      zIndex: -1,
     },
     btncontainer: {
       flexDirection: 'row',
-      flexWrap: "wrap", // CE PARAMETRE FAIS BUGGER LE BACKGROUND IMG
+      flexWrap: "wrap",
      // alignItems: 'center',
       justifyContent: 'space-between',
       margin: 10,
@@ -160,25 +162,17 @@ playSample = async (uri) => {
 ))
   
   render = () => (
-<>
 
-
-<View style={this.styles.container}>
-{/* <ImageBackground style={this.styles.backgroundImg} source={require('./assets/background.jpg')}>    */}
-<ScrollView showsVerticalScrollIndicator={false}>
-      <View style={this.styles.btncontainer}>
-        
-          <StatusBar />
+<ImageBackground style={this.styles.backgroundImg} source={require('../assets/background.jpg')}> 
+  <View style={this.styles.container}>
+    <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={this.styles.btncontainer}>
+            <StatusBar />
             { this.renderSamples() }
-      </View> 
+        </View>
+    </ScrollView>   
+  </View> 
+</ImageBackground> 
 
-{/* </ImageBackground>   */}
-</ScrollView>
-</View> 
-
-
-</>
-    
-      
-  )}
+)}
   
