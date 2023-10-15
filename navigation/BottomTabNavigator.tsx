@@ -32,14 +32,14 @@ export default function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-home" color={color} />,
         }}
       />
-      <BottomTab.Screen
+      {/* <BottomTab.Screen
         name="TabTwo"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-star" color={color} />,
           title: "Favoris",
         }}
-      />
+      /> */}
     </BottomTab.Navigator>
   );
 }

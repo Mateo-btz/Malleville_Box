@@ -1,13 +1,17 @@
-import * as React from 'react';
-import { StyleSheet } from 'react-native';
-import { Text, View } from '../components/Themed';
-import Favorites from '../components/Favorites';
+import React from 'react';
+import { View, Text, ScrollView, StyleSheet } from 'react-native';
 
-export default function TabTwoScreen() {
+const Favorites = ({ likedSounds }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Favoris</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <Text style={styles.title}>Favorites</Text>
+      <ScrollView style={styles.scrollView}>
+        {likedSounds.map(sample => (
+          <View key={sample.id} style={styles.box}>
+            <Text style={styles.btnText}>{sample.name}</Text>
+          </View>
+        ))}
+      </ScrollView>
     </View>
   );
 }
@@ -15,17 +19,30 @@ export default function TabTwoScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    position: 'relative',
+    zIndex: 1,
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    
+    alignItems: 'center',
+    top: 40,
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  scrollView: {
+    marginHorizontal: 20,
+  },
+  box: {
+    backgroundColor: "transparent",
+    justifyContent: "space-between",
+    alignItems: "center",
+    flex: 1
+  },
+  btnText: {
+    textAlign: "center",
+    color: "black",
+    fontWeight: "bold",
+    fontSize: 15,
+    maxWidth: 100,
+    paddingTop: 5,
   },
 });
+
+export default Favorites;
