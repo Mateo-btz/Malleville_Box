@@ -68,11 +68,7 @@ export default class Samples extends React.Component <any, any> {
       zIndex: 1,
     },
     row: {
-      flexDirection: "row",
-    },
-    title: {
-      alignItems: 'center',
-      top: 40,
+      flexDirection: "row"
     },
     backgroundImg: {
       width: '100%',
@@ -80,51 +76,40 @@ export default class Samples extends React.Component <any, any> {
       position: 'absolute',
       zIndex: -1,
     },
-    btnActive: {
-      color: "red",
-    },
     btn: {
       color: "black",
     },
     btncontainer: {
-      flexDirection: 'row',
+      flexDirection: 'column',
       flexWrap: "wrap",
-     // alignItems: 'center',
       justifyContent: 'space-between',
       margin: 10,
       marginTop: 40,
     },
-    space: {
-      width: 15,
-      height: 15,
-    },
     box: {
       backgroundColor: "transparent",
-      justifyContent: "space-between",
+      justifyContent: "center",
       alignItems: "center",
       flex: 1
     },
     button: {
-      width: 110,
-      height: 100,
-      borderColor: "yellow",
+      width: "100%",
+      height: 75,
       borderWidth: 1,
       borderStyle: "solid",
       borderRadius: 8,
-      margin: 7,
       backgroundColor: "white",
+      marginTop: 10
     },
     btnText: {
     textAlign: "center",
     color: "black",
     fontWeight: "bold",
-    fontSize: 15,
-    maxWidth: 100,
-    paddingTop: 25, // temporaire, mettre à 5
+    fontSize: 20,
     },
     scrollView: {
       marginHorizontal: 20,
-    },
+    }
 })
    loading = true;
 
@@ -173,34 +158,17 @@ toggleLike = (id) => {
   key={i}
   onPress={() => this.playSample(sample.uri)} >
   <View style={this.styles.box}>
-  <Text style={this.styles.btnText}>{sample.name}</Text> 
     <View style={this.styles.row}>
-    {/* <TouchableOpacity onPress={() => this.toggleLike(sample.id)}>
-      <Ionicons id="heart" name="heart" size={40} style={sample.isLiked ? this.styles.btnActive : this.styles.btn} />
-    </TouchableOpacity> */}
-
-      {/* <TouchableOpacity onPress={() => {
+    <Text style={this.styles.btnText}>{sample.name}</Text> 
+      <TouchableOpacity 
+      onPress={() => {
         const {uri} = sample.uri; 
         console.log(uri);
         const destination = FileSystem.documentDirectory + 'audio.wav';
-        downloadAsync(uri, destination).then(console.log('Audio file downloaded to: ', destination));
+        downloadAsync(uri, destination);
         }}>
-        <Ionicons name="download" size={35} /> 
-      </TouchableOpacity> */}
-
-      {/* <TouchableOpacity
-      key={sample.id}
-      onPress={() => {
-      downloadAsync(sample.uri, FileSystem.documentDirectory + 'audio.wav')
-      .then(({ uri }) => {
-        console.log('Finished downloading to ', uri);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-    }}>
-        <Ionicons name="download" size={35} /> 
-      </TouchableOpacity> */}
+        <Ionicons name="download" size={30} /> 
+      </TouchableOpacity>
     </View>
   </View>
 </TouchableOpacity>
