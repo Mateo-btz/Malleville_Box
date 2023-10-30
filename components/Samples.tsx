@@ -151,28 +151,37 @@ toggleLike = (id) => {
   });
 }
 
+downloadSample = async (uri, name) => {
+  try {
+    const downloadRes = await downloadAsync(uri, FileSystem.documentDirectory + name + ".wav");
+    if (downloadRes.status === 200) {
+      console.log("Téléchargement réussi !");
+    } else {
+      console.log("Échec du téléchargement");
+    }
+  } catch (error) {
+    console.error("Erreur lors du téléchargement : ", error);
+  }
+}
+
+
 // template boutons
- renderSamples = () => this.state.SAMPLES.map((sample, i) => (
-<TouchableOpacity
-  style={this.styles.button}
-  key={i}
-  onPress={() => this.playSample(sample.uri)} >
-  <View style={this.styles.box}>
-    <View style={this.styles.row}>
-    <Text style={this.styles.btnText}>{sample.name}</Text> 
-      <TouchableOpacity 
-      onPress={() => {
-        const {uri} = sample.uri; 
-        console.log(uri);
-        const destination = FileSystem.documentDirectory + 'audio.wav';
-        downloadAsync(uri, destination);
-        }}>
-        <Ionicons name="download" size={30} /> 
-      </TouchableOpacity>
+renderSamples = () => this.state.SAMPLES.map((sample, i) => (
+  <TouchableOpacity
+    style={this.styles.button}
+    key={i}
+    onPress={() => this.playSample(sample.uri)} >
+    <View style={this.styles.box}>
+      <View style={this.styles.row}>
+        <Text style={this.styles.btnText}>{sample.name}</Text> 
+        <TouchableOpacity onPress={() => this.downloadSample(sample.uri, sample.name)}>
+          <Ionicons name="download" size={30} /> 
+        </TouchableOpacity>
+      </View>
     </View>
-  </View>
-</TouchableOpacity>
+  </TouchableOpacity>
 ))
+
   
 render = () => (
 <ImageBackground style={this.styles.backgroundImg} source={require('../assets/background.jpg')}> 
